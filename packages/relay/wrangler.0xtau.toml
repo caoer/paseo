@@ -6,7 +6,13 @@ compatibility_date = "2024-12-01"
 routes = [{ pattern = "paseo.0xtau.com", custom_domain = true }]
 
 [observability]
-enabled = true
+enabled = false
+
+# Forward every request (WebSocket upgrades included) to the lockin relay, so
+# clients and daemons still configured for paseo.0xtau.com reach the same
+# Durable Objects as paseo.lockin.bot.
+[vars]
+PASEO_RELAY_UPSTREAM = "https://paseo.lockin.bot"
 
 [[durable_objects.bindings]]
 name = "RELAY"
