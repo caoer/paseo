@@ -1,0 +1,17 @@
+name = "paseo-relay-lockin"
+account_id = "241a9558a7f01d38f666d33ae4aa7d99"
+main = "src/cloudflare-adapter.ts"
+compatibility_date = "2024-12-01"
+
+routes = [{ pattern = "paseo.lockin.bot", custom_domain = true }]
+
+[observability]
+enabled = false
+
+[[durable_objects.bindings]]
+name = "RELAY"
+class_name = "RelayDurableObject"
+
+[[migrations]]
+tag = "v1"
+new_sqlite_classes = ["RelayDurableObject"]
